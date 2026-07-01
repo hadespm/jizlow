@@ -46,7 +46,9 @@ body{
 
     position:relative;
     overflow:hidden;
-    transition:.4s ease;
+   transition:
+    transform .35s ease,
+    box-shadow .35s ease;
     transform-style:preserve-3d;
     will-change:transform;
 }
@@ -112,6 +114,12 @@ h2{
 }
 .btn:active{
     transform:scale(.97);
+}
+.btn:focus-visible{
+    outline:none;
+    box-shadow:
+        0 0 0 3px rgba(255,215,0,.35),
+        0 0 20px rgba(255,215,0,.6);
 }
 .btn i{
     margin-right:10px;
