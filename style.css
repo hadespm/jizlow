@@ -47,6 +47,8 @@ body{
     position:relative;
     overflow:hidden;
     transition:.4s ease;
+    transform-style:preserve-3d;
+    will-change:transform;
 }
 
 .avatar{
