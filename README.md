@@ -1,2 +1,2 @@
 # jizlow
-JiZ LoW - Liên hệ nạp xu
+JiZ-N - Liên hệ nạp xu
