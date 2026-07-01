@@ -302,3 +302,31 @@ h2,
         transform:translateY(0);
     }
 }
+/* Luxury Scrollbar */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#FFD700;
+    border-radius:999px;
+    border:2px solid #111;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#ffe55c;
+}
+::selection{
+    background:#FFD700;
+    color:#111;
+}
+
+::-moz-selection{
+    background:#FFD700;
+    color:#111;
+}
