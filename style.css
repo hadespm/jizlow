@@ -154,3 +154,38 @@ h2{
         font-size:16px;
     }
 }
+.card{
+    animation:cardFadeIn .8s ease forwards;
+}
+
+@keyframes cardFadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.avatar,
+h1,
+h2,
+.btn,
+.footer{
+    animation:itemFadeIn .6s ease forwards;
+}
+
+@keyframes itemFadeIn{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
