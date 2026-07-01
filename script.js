@@ -58,3 +58,14 @@ if(lastUpdate){
     lastUpdate.textContent = "Cập nhật: " + date;
 
 }
+function sharePage() {
+    if (navigator.share) {
+        navigator.share({
+            title: "JiZ LoW",
+            text: "Liên hệ nạp xu - JiZ LoW",
+            url: window.location.href
+        });
+    } else {
+        copyPageLink();
+    }
+}
