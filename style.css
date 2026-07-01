@@ -362,3 +362,32 @@ h2,
     letter-spacing:.5px;
 
 }
+/* ===== LOGO ===== */
+
+.logo-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:10px 0 30px;
+}
+
+.logo{
+    width:300px;
+    max-width:90%;
+    height:auto;
+    display:block;
+
+    filter:
+        drop-shadow(0 0 15px rgba(255,215,0,.20))
+        drop-shadow(0 0 35px rgba(255,215,0,.10));
+
+    transition:.35s ease;
+}
+
+.logo:hover{
+    transform:scale(1.03);
+
+    filter:
+        drop-shadow(0 0 20px rgba(255,215,0,.35))
+        drop-shadow(0 0 40px rgba(255,215,0,.20));
+}
