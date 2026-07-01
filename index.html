@@ -47,28 +47,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-.background-glow{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-1;
-
-    background:
-        radial-gradient(circle at 20% 20%, rgba(255,215,0,.08), transparent 18%),
-        radial-gradient(circle at 80% 30%, rgba(255,215,0,.05), transparent 22%),
-        radial-gradient(circle at 60% 80%, rgba(255,215,0,.06), transparent 20%);
-
-    animation:glowMove 18s ease-in-out infinite alternate;
-}
-
-@keyframes glowMove{
-
-    from{
-        transform:translate(0,0) scale(1);
-    }
-
-    to{
-        transform:translate(-30px,-20px) scale(1.08);
-    }
-
-}
