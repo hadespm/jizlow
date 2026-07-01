@@ -27,8 +27,8 @@ body{
 
 .card{
     animation:logoPulse 2.5s ease-in-out infinite;
-    width:420px;
-    max-width:95%;
+    width:460px;
+max-width:92%;
     background:rgba(26,26,26,.9);
     border:1px solid rgba(255,215,0,.25);
 
@@ -53,8 +53,8 @@ body{
 }
 
 .avatar{
-    width:120px;
-    height:120px;
+  width:105px;
+height:105px;
     margin:0 auto 25px;
     border-radius:50%;
     background:linear-gradient(145deg,#FFD700,#ffb700);
@@ -69,7 +69,7 @@ body{
 }
 
 h1{
-    font-size:42px;
+    font-size:42px;;
     color:#FFD700;
     margin-bottom:10px;
     letter-spacing:2px;
