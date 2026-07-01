@@ -27,6 +27,7 @@ body{
 }
 
 .card{
+    animation:logoPulse 2.5s ease-in-out infinite;
     width:420px;
     max-width:95%;
     background:rgba(26,26,26,.9);
@@ -249,4 +250,23 @@ h2,
     box-shadow:
         0 0 35px rgba(255,215,0,.35),
         0 25px 60px rgba(0,0,0,.75);
+}
+@keyframes logoPulse{
+    0%{
+        box-shadow:
+            0 0 15px rgba(255,215,0,.6),
+            0 0 35px rgba(255,215,0,.3);
+    }
+
+    50%{
+        box-shadow:
+            0 0 25px rgba(255,215,0,.9),
+            0 0 60px rgba(255,215,0,.45);
+    }
+
+    100%{
+        box-shadow:
+            0 0 15px rgba(255,215,0,.6),
+            0 0 35px rgba(255,215,0,.3);
+    }
 }
