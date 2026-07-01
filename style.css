@@ -198,7 +198,6 @@ h2{
 .avatar,
 h1,
 h2,
-.btn,
 .footer{
     animation:itemFadeIn .6s ease forwards;
 }
@@ -268,5 +267,29 @@ h2,
         box-shadow:
             0 0 15px rgba(255,215,0,.6),
             0 0 35px rgba(255,215,0,.3);
+    }
+}
+.btn{
+    opacity:0;
+    animation:buttonFade .6s ease forwards;
+}
+
+.btn:nth-of-type(1){animation-delay:.15s;}
+.btn:nth-of-type(2){animation-delay:.25s;}
+.btn:nth-of-type(3){animation-delay:.35s;}
+.btn:nth-of-type(4){animation-delay:.45s;}
+.btn:nth-of-type(5){animation-delay:.55s;}
+.btn:nth-of-type(6){animation-delay:.65s;}
+.btn:nth-of-type(7){animation-delay:.75s;}
+
+@keyframes buttonFade{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 }
