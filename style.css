@@ -58,28 +58,6 @@ h2{
     margin-bottom:28px;
 }
 
-/* QR */
-.qr-box{
-    width:220px;
-    height:220px;
-    margin:0 auto 30px;
-    background:#fff;
-    border-radius:18px;
-    border:4px solid #FFD700;
-    padding:10px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    box-shadow:0 0 25px rgba(255,215,0,.4);
-}
-
-.qr-box img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    display:block;
-}
 
 /* Button */
 .btn{
