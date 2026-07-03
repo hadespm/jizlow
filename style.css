@@ -391,3 +391,20 @@ h2,
         drop-shadow(0 0 20px rgba(255,215,0,.35))
         drop-shadow(0 0 40px rgba(255,215,0,.20));
 }
+/* ===== SERVICES ===== */
+
+.service-title{
+    color:#FFD700;
+    font-size:32px;
+    font-weight:800;
+    margin-top:5px;
+    margin-bottom:8px;
+    text-align:center;
+}
+
+.service-subtitle{
+    color:#bdbdbd;
+    font-size:15px;
+    margin-bottom:28px;
+    text-align:center;
+}
