@@ -13,7 +13,11 @@
 </head>
 
 <body>
-
+<script>
+if(sessionStorage.getItem("VIP_UNLOCKED") !== "true"){
+    window.location.href = "vip.html";
+}
+</script>
 <div class="card price-card vip-price-card">
     <div class="logo-box">
         <img src="logo.png" alt="Jz-N Logo" class="logo">
