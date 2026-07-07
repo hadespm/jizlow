@@ -45,16 +45,22 @@
 </div>
 
 <script>
+const VIP_PASSWORD = "JIZVIP2026";
+
 function checkVipPassword(){
-    const pass = document.getElementById("vipPassword").value;
+
+    const input = document.getElementById("vipPassword");
     const message = document.getElementById("vipMessage");
 
-    if(pass === "JIZNVIP68"){
+    const pass = input.value.trim();
+
+    if(pass === VIP_PASSWORD){
         window.location.href = "vip-price.html";
     }else{
         message.textContent = "Sai mật khẩu VIP!";
     }
 }
+</script>
 </script>
 
 </body>
