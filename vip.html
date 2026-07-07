@@ -27,7 +27,7 @@
     </p>
 
     <div class="vip-box">
-        <input type="password" id="vipPassword" placeholder="Nhập mật khẩu VIP">
+        <input type="password" id="vipPassword" placeholder="Nhập mật khẩu VIP" onkeydown="if(event.key==='Enter'){checkVipPassword()}">
         <button class="btn" onclick="checkVipPassword()">
             <i class="fa-solid fa-lock-open"></i> Xác nhận
         </button>
