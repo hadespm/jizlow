@@ -576,3 +576,12 @@ h2,
 .vip-badge i{
     color:#111;
 }
+.price-banner {
+  width: 100%;
+  max-width: 520px;
+  display: block;
+  margin: 18px auto 24px;
+  border-radius: 18px;
+  box-shadow: 0 0 28px rgba(255, 215, 0, 0.28);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+}
