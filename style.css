@@ -585,3 +585,51 @@ h2,
   box-shadow: 0 0 28px rgba(255, 215, 0, 0.28);
   border: 1px solid rgba(255, 215, 0, 0.35);
 }
+.price-banner {
+  width: 100%;
+  max-width: 520px;
+  display: block;
+  margin: 14px auto 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  box-shadow: 0 0 28px rgba(255, 215, 0, 0.25);
+}
+
+.service-title {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.service-title h1 {
+  color: #ffd400;
+  font-size: 24px;
+  margin: 8px 0 4px;
+  font-weight: 900;
+}
+
+.service-title p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  margin: 0;
+}
+
+.service-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.service-card h3 {
+  margin: 0 0 4px;
+}
+
+.service-card p {
+  margin: 0;
+}
+
+.back-btn {
+  margin-top: 14px;
+}
