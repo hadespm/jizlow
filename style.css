@@ -704,3 +704,43 @@ h2,
   border-radius: 12px;
   object-fit: contain !important;
 }
+/* FIX QR MOBILE KHÔNG BỊ CẮT */
+.qr-box {
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 14px auto 20px !important;
+  padding: 10px !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  border-radius: 18px;
+}
+
+.qr-box img,
+.qr-image {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  display: block !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 92vw !important;
+    max-width: 380px !important;
+    padding: 22px 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .qr-box {
+    padding: 8px !important;
+  }
+
+  .qr-image {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
