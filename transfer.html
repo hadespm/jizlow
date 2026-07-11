@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chuyển khoản - JiZ LoW</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+  <div class="card">
+
+    <div class="logo-box">
+      <img src="logo.png" alt="JiZ-N Logo" class="logo">
+    </div>
+
+    <div class="service-title">
+      <h1>CHUYỂN KHOẢN</h1>
+      <p>Vui lòng chuyển khoản đúng nội dung để shop xử lý nhanh hơn</p>
+    </div>
+
+    <div class="bank-box">
+      <div class="bank-row">
+        <span>Ngân hàng</span>
+        <strong>ĐIỀN TÊN NGÂN HÀNG</strong>
+      </div>
+
+      <div class="bank-row">
+        <span>Chủ tài khoản</span>
+        <strong>ĐIỀN TÊN CHỦ TÀI KHOẢN</strong>
+      </div>
+
+      <div class="bank-row">
+        <span>Số tài khoản</span>
+        <strong id="accountNumber">ĐIỀN SỐ TÀI KHOẢN</strong>
+      </div>
+
+      <div class="bank-row">
+        <span>Nội dung CK</span>
+        <strong id="transferContent">JIZN + TÊN KHÁCH</strong>
+      </div>
+    </div>
+
+    <button class="btn" onclick="copyAccount()">
+      <i class="fa-solid fa-copy"></i> Sao chép số tài khoản
+    </button>
+
+    <a class="btn" href="https://zalo.me/0355794800" target="_blank">
+      <i class="fa-solid fa-headset"></i> Gửi hóa đơn cho shop
+    </a>
+
+    <a class="btn back-btn" href="services.html">
+      <i class="fa-solid fa-arrow-left"></i> Quay lại
+    </a>
+
+    <div class="footer">
+      <div>© 2026 JiZ LoW</div>
+    </div>
+
+  </div>
+
+  <script>
+    function copyAccount() {
+      const account = document.getElementById("accountNumber").innerText;
+      navigator.clipboard.writeText(account);
+      alert("Đã sao chép số tài khoản!");
+    }
+  </script>
+</body>
+</html>
