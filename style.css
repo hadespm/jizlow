@@ -677,12 +677,3 @@ h2,
   text-align: center;
   box-sizing: border-box;
 }
-
-.qr-image {
-  width: 100%;
-  max-width: 230px;
-  border-radius: 14px;
-  display: block;
-  margin: 0 auto;
-  box-shadow: 0 0 24px rgba(255, 215, 0, 0.2);
-}
