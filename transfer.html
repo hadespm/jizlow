@@ -21,7 +21,9 @@
       <h1>CHUYỂN KHOẢN</h1>
       <p>Vui lòng chuyển khoản đúng nội dung để shop xử lý nhanh hơn</p>
     </div>
-
+<div class="qr-box">
+  <img src="qr-bank.png" alt="QR Chuyển khoản" class="qr-image">
+</div>
     <div class="bank-box">
       <div class="bank-row">
         <span>Ngân hàng</span>
@@ -47,7 +49,9 @@
     <button class="btn" onclick="copyAccount()">
       <i class="fa-solid fa-copy"></i> Sao chép số tài khoản
     </button>
-
+<button class="btn" onclick="copyTransferContent()">
+  <i class="fa-solid fa-copy"></i> Sao chép nội dung CK
+</button>
     <a class="btn" href="https://zalo.me/0355794800" target="_blank">
       <i class="fa-solid fa-headset"></i> Gửi hóa đơn cho shop
     </a>
@@ -63,11 +67,17 @@
   </div>
 
   <script>
-    function copyAccount() {
-      const account = document.getElementById("accountNumber").innerText;
-      navigator.clipboard.writeText(account);
-      alert("Đã sao chép số tài khoản!");
-    }
-  </script>
+  function copyAccount() {
+    const account = document.getElementById("accountNumber").innerText;
+    navigator.clipboard.writeText(account);
+    alert("Đã sao chép số tài khoản!");
+  }
+
+  function copyTransferContent() {
+    const content = document.getElementById("transferContent").innerText;
+    navigator.clipboard.writeText(content);
+    alert("Đã sao chép nội dung chuyển khoản!");
+  }
+</script>
 </body>
 </html>
