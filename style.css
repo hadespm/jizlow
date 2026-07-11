@@ -677,3 +677,30 @@ h2,
   text-align: center;
   box-sizing: border-box;
 }
+.card {
+  overflow: hidden;
+}
+
+.qr-box {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 12px auto 16px !important;
+  padding: 8px !important;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  background: rgba(255, 215, 0, 0.06);
+  text-align: center;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.qr-box img,
+.qr-image {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+  border-radius: 12px;
+  object-fit: contain !important;
+}
