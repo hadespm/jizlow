@@ -744,3 +744,21 @@ h2,
     max-width: 100% !important;
   }
 }
+.home-banner-box {
+  width: 100%;
+  margin: 14px auto 18px;
+  padding: 6px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 215, 0, 0.38);
+  background: rgba(255, 215, 0, 0.06);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.home-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  object-fit: contain;
+}
