@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nạp Xu</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #111;
+}
+
+.wrapper {
+    width: 840px;
+    max-width: 94%;
+    margin: 25px auto 60px;
+}
+
+h2 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.coin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.coin-card {
+    height: 105px;
+
+    background: #f8f8f8;
+
+    border: 1.5px solid transparent;
+    border-radius: 7px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.coin-card:hover {
+    border-color: #fe2c55;
+    background: #fff5f7;
+}
+
+.coin-card.active {
+    border-color: #fe2c55;
+    background: #fff5f7;
+}
+
+.coin-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.coin-icon {
+    width: 27px;
+    height: 27px;
+
+    border-radius: 50%;
+
+    background: #ffb619;
+
+    color: white;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 7px;
+
+    font-size: 15px;
+}
+
+.price {
+    margin-top: 10px;
+    color: #777;
+    font-size: 14px;
+}
+
+
+/* =========================
+   CUSTOM PANEL
+========================= */
+
+.custom-panel {
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 22px;
+
+    background: #fafafa;
+
+    border-radius: 10px;
+}
+
+.custom-panel h3 {
+    margin-top: 0;
+}
+
+.custom-input {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 7px;
+
+    font-size: 18px;
+
+    outline: none;
+}
+
+.custom-input:focus {
+    border-color: #fe2c55;
+}
+
+
+/* =========================
+   CUSTOM RESULT
+========================= */
+
+.custom-result {
+    margin-top: 15px;
+
+    background: white;
+
+    border-radius: 8px;
+
+    padding: 15px;
+
+    line-height: 1.9;
+}
+
+.total-money {
+    font-size: 27px;
+    font-weight: bold;
+    color: #fe2c55;
+}
+
+.current-price {
+    font-weight: bold;
+    color: #0877ff;
+}
+
+.price-group {
+    font-weight: bold;
+}
+
+
+/* =========================
+   PRICE GROUP LIST
+========================= */
+
+.price-list {
+    margin-top: 15px;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    border: 1px solid #eee;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 11px 13px;
+
+    background: white;
+
+    border-bottom: 1px solid #eee;
+}
+
+.price-row:last-child {
+    border-bottom: none;
+}
+
+.price-row.active {
+    background: #fff1f4;
+    color: #fe2c55;
+    font-weight: bold;
+}
+
+
+/* =========================
+   WARNING
+========================= */
+
+.warning {
+    display: none;
+
+    color: #c62828;
+
+    background: #fff0f0;
+
+    border: 1px solid #ffc2c2;
+
+    padding: 10px;
+
+    border-radius: 7px;
+
+    margin-top: 12px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 14px;
+}
+
+.btn-pay {
+    background: #fe2c55;
+    color: white;
+}
+
+.btn-copy {
+    background: #171822;
+    color: white;
+}
+
+.btn-zalo {
+    background: #0877ff;
+    color: white;
+}
+
+.btn:hover {
+    opacity: .9;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    background: rgba(0,0,0,.55);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px;
+}
+
+.modal-box {
+    width: 430px;
+    max-width: 100%;
+
+    max-height: 96vh;
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 26px;
+
+    position: relative;
+
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+
+    right: 16px;
+    top: 10px;
+
+    font-size: 30px;
+
+    cursor: pointer;
+    color: #777;
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+.payment-coin {
+    margin-top: 12px;
+    font-size: 17px;
+}
+
+.payment-money {
+    font-size: 31px;
+
+    color: #fe2c55;
+
+    font-weight: bold;
+
+    margin: 14px 0 5px;
+}
+
+.payment-price {
+    color: #777;
+    font-size: 14px;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================
+   QR
+========================= */
+
+.qr-img {
+    width: 250px;
+    max-width: 100%;
+
+    display: block;
+
+    margin: 10px auto 20px;
+}
+
+
+/* =========================
+   BANK
+========================= */
+
+.bank-box {
+    padding: 15px;
+
+    background: #f7f7f7;
+
+    border-radius: 10px;
+
+    text-align: left;
+
+    line-height: 1.9;
+
+    font-size: 14px;
+}
+
+.order-code {
+    padding: 14px;
+
+    margin-top: 5px;
+
+    border: 1px dashed #fe2c55;
+
+    border-radius: 7px;
+
+    background: #fff4f6;
+
+    text-align: center;
+
+    color: #fe2c55;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 650px) {
+
+    .coin-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .coin-card {
+        height: 100px;
+    }
+
+    .coin-main {
+        font-size: 20px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="wrapper">
+
+    <h2>Chọn số xu muốn nạp</h2>
+
+
+    <div class="coin-grid">
+
+
+        <!-- 30 -->
+
+        <div class="coin-card"
+             onclick="selectFixed(this,30)">
+
+            <div class="coin-main">
+
+                <span class="coin-icon">♪</span>
+
+                30
+
+            </div>
+
+            <div class="price"
+                 data-fixed-coin="30">
+            </div>
+
+        </div>
+
+
+        <!-- 50 -->
+
+        <div class="coin-card"
+             onclick="selectFixed(this,50)">
+
+            <div class="coin-main">
+
+                <span class="coin-icon">♪</span>
+
+                50
+
+            </div>
+
+            <div class="price"
+                 data-fixed-coin="50">
+            </div>
+
+        </div>
+
+
+        <!-- 100 -->
+
+        <div class="coin-card"
+             onclick="selectFixed(this,100)">
+
+            <div class="coin-main">
+
+                <span class="coin-icon">♪</span>
+
+                100
+
+            </div>
+
+            <div class="price"
+                 data-fixed-coin="100">
+            </div>
+
+        </div>
+
+
+        <!-- 200 -->
+
+        <div class="coin-card"
+             onclick="selectFixed(this,200)">
+
+            <div class="coin-main">
+
+                <span class="coin-icon">♪</span>
+
+                200
+
+            </div>
+
+            <div class="price"
+                 data-fixed-coin="200">
+            </div>
+
+        </div>
+
+
+        <!-- 300 -->
+
+        <div class="coin-card"
+             onclick="selectFixed(this,300)">
+
+            <div class="coin-main">
+
+                <span class="coin-icon">♪</span>
+
+                300
+
+            </div>
+
+            <div class="price"
+                 data-fixed-coin="300">
+            </div>
+
+        </div>
+
+
+        <!-- 500 -->
+
+        <div class="coin-card"
+             onclick="selectFixed(this,500)">
+
+            <div class="coin-main">
+
+                <span class="coin-icon">♪</span>
+
+                500
+
+            </div>
+
+            <div class="price"
+                 data-fixed-coin="500">
+            </div>
+
+        </div>
+
+
+        <!-- 1000 -->
+
+        <div class="coin-card"
+             onclick="selectFixed(this,1000)">
+
+            <div class="coin-main">
+
+                <span class="coin-icon">♪</span>
+
+                1,000
+
+            </div>
+
+            <div class="price"
+                 data-fixed-coin="1000">
+            </div>
+
+        </div>
+
+
+        <!-- CUSTOM -->
+
+        <div class="coin-card"
+             onclick="showCustom(this)">
+
+            <div class="coin-main">
+
+                <span class="coin-icon">♪</span>
+
+                Tùy chỉnh
+
+            </div>
+
+            <div class="price"
+                 id="customCardPrice">
+
+                Từ ₫280/xu
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =============================
+         CUSTOM
+    ============================== -->
+
+    <div class="custom-panel"
+         id="customPanel">
+
+        <h3>
+            Nhập số xu muốn nạp
+        </h3>
+
+
+        <input
+            type="number"
+            id="customCoin"
+            class="custom-input"
+            min="1000"
+            max="1000000"
+            placeholder="Ví dụ: 50000"
+            oninput="previewCustom()"
+        >
+
+
+        <div class="custom-result">
+
+            <div>
+
+                Số xu:
+
+                <strong id="previewCoin">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                Nhóm giá:
+
+                <span class="price-group"
+                      id="previewGroup">
+
+                    -
+
+                </span>
+
+            </div>
+
+
+            <div>
+
+                Đơn giá:
+
+                <span class="current-price"
+                      id="previewPrice">
+
+                    0đ/xu
+
+                </span>
+
+            </div>
+
+
+            <div>
+                Thành tiền:
+            </div>
+
+
+            <div class="total-money"
+                 id="previewTotal">
+
+                0đ
+
+            </div>
+
+        </div>
+
+
+        <!-- PRICE GROUP -->
+
+        <div class="price-list"
+             id="priceList">
+        </div>
+
+
+        <div class="warning"
+             id="warning">
+
+            Số xu phải từ 1.000 đến 1.000.000.
+
+        </div>
+
+
+        <button
+            class="btn btn-pay"
+            onclick="customCheckout()">
+
+            Thanh toán
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =============================
+     PAYMENT MODAL
+============================== -->
+
+<div class="modal"
+     id="paymentModal">
+
+    <div class="modal-box">
+
+
+        <span class="close"
+              onclick="closeModal()">
+
+            ×
+
+        </span>
+
+
+        <h2>
+            Thanh toán
+        </h2>
+
+
+        <div class="payment-coin">
+
+            Bạn đang nạp
+
+            <strong>
+
+                <span id="payCoin">
+                    0
+                </span>
+
+                xu
+
+            </strong>
+
+        </div>
+
+
+        <div class="payment-money"
+             id="payMoney">
+
+            0đ
+
+        </div>
+
+
+        <div class="payment-price"
+             id="payPrice">
+        </div>
+
+
+        <img
+            class="qr-img"
+            id="qrImage"
+            alt="VietQR"
+        >
+
+
+        <div class="bank-box">
+
+
+            <div>
+
+                <strong>
+                    Ngân hàng:
+                </strong>
+
+                <span id="bankName">
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Số tài khoản:
+                </strong>
+
+                <span id="accountNo">
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Chủ tài khoản:
+                </strong>
+
+                <span id="accountName">
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Số tiền:
+                </strong>
+
+                <span id="bankMoney">
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Nội dung chuyển khoản:
+                </strong>
+
+            </div>
+
+
+            <div class="order-code"
+                 id="orderCode">
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="btn btn-copy"
+            onclick="copyOrder()">
+
+            📋 Copy nội dung chuyển khoản
+
+        </button>
+
+
+        <button
+            class="btn btn-zalo"
+            onclick="sendZalo()">
+
+            💬 Gửi bill qua Zalo
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =================================================
+   THÔNG TIN NGÂN HÀNG
+================================================= */
+
+const BANK_ID =
+    "MB";
+
+const BANK_NAME =
+    "MB Bank";
+
+const ACCOUNT_NO =
+    "0123456789";
+
+const ACCOUNT_NAME =
+    "NGUYEN VAN A";
+
+const ZALO_PHONE =
+    "0901234567";
+
+
+
+/* =================================================
+   GIÁ GÓI THƯỜNG
+
+   30 / 50 / 100 / 200 / 300 / 500 / 1000
+
+   Sau này chỉ cần đổi chỗ này.
+================================================= */
+
+const NORMAL_PRICE =
+    280;
+
+
+
+/* =================================================
+   BẢNG GIÁ CUSTOM
+
+   SAU NÀY MUỐN ĐỔI GIÁ
+   CHỈ SỬA PHẦN NÀY.
+================================================= */
+
+const PRICE_GROUPS = [
+
+    {
+        id: "G1",
+
+        name: "1K - 10K",
+
+        min: 1000,
+
+        max: 10999,
+
+        price: 280
+    },
+
+
+    {
+        id: "G2",
+
+        name: "11K - 100K",
+
+        min: 11000,
+
+        max: 109999,
+
+        price: 276
+    },
+
+
+    {
+        id: "G3",
+
+        name: "110K - 1M",
+
+        min: 110000,
+
+        max: 1000000,
+
+        price: 270
+    }
+
+];
+
+
+
+/* =================================================
+   CURRENT
+================================================= */
+
+let currentCoin =
+    0;
+
+let currentMoney =
+    0;
+
+let currentPrice =
+    0;
+
+let currentOrder =
+    "";
+
+let currentGroup =
+    null;
+
+let isCustom =
+    false;
+
+
+
+/* =================================================
+   FORMAT NUMBER
+================================================= */
+
+function formatNumber(number) {
+
+    return Number(number)
+        .toLocaleString("vi-VN");
+
+}
+
+
+
+/* =================================================
+   FORMAT MONEY
+================================================= */
+
+function formatMoney(number) {
+
+    return "₫" +
+        formatNumber(number);
+
+}
+
+
+
+/* =================================================
+   RENDER GIÁ GÓI THƯỜNG
+
+   Không cần nhập giá thủ công nữa.
+================================================= */
+
+function renderFixedPrices() {
+
+    document
+        .querySelectorAll(
+            "[data-fixed-coin]"
+        )
+        .forEach(element => {
+
+            const coin =
+                Number(
+                    element.dataset.fixedCoin
+                );
+
+
+            const total =
+                coin *
+                NORMAL_PRICE;
+
+
+            element.innerText =
+                formatMoney(total);
+
+        });
+
+
+    /*
+       Card tùy chỉnh
+    */
+
+    document.getElementById(
+        "customCardPrice"
+    ).innerText =
+
+        "Từ ₫" +
+
+        formatNumber(
+            PRICE_GROUPS[0].price
+        ) +
+
+        "/xu";
+
+}
+
+
+
+/* =================================================
+   GET PRICE GROUP
+================================================= */
+
+function getPriceGroup(coin) {
+
+    return PRICE_GROUPS.find(
+
+        group =>
+
+            coin >= group.min &&
+
+            coin <= group.max
+
+    );
+
+}
+
+
+
+/* =================================================
+   RENDER PRICE GROUP
+================================================= */
+
+function renderPriceGroups() {
+
+    const list =
+        document.getElementById(
+            "priceList"
+        );
+
+
+    list.innerHTML =
+        "";
+
+
+    PRICE_GROUPS.forEach(group => {
+
+        const row =
+            document.createElement(
+                "div"
+            );
+
+
+        row.className =
+            "price-row";
+
+
+        row.dataset.group =
+            group.id;
+
+
+        row.innerHTML = `
+
+            <span>
+
+                ${group.name} xu
+
+            </span>
+
+            <strong>
+
+                ${formatNumber(
+                    group.price
+                )}đ/xu
+
+            </strong>
+
+        `;
+
+
+        list.appendChild(
+            row
+        );
+
+    });
+
+}
+
+
+
+/* =================================================
+   HIGHLIGHT GROUP
+================================================= */
+
+function highlightGroup(group) {
+
+    document
+        .querySelectorAll(
+            ".price-row"
+        )
+        .forEach(row => {
+
+            row.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    if(!group) {
+
+        return;
+
+    }
+
+
+    const active =
+        document.querySelector(
+
+            `[data-group="${group.id}"]`
+
+        );
+
+
+    if(active) {
+
+        active.classList.add(
+            "active"
+        );
+
+    }
+
+}
+
+
+
+/* =================================================
+   CARD ACTIVE
+================================================= */
+
+function clearCardActive() {
+
+    document
+        .querySelectorAll(
+            ".coin-card"
+        )
+        .forEach(card => {
+
+            card.classList.remove(
+                "active"
+            );
+
+        });
+
+}
+
+
+
+/* =================================================
+   FIXED PACKAGE
+
+   Luôn dùng NORMAL_PRICE
+================================================= */
+
+function selectFixed(
+    card,
+    coin
+) {
+
+    clearCardActive();
+
+
+    card.classList.add(
+        "active"
+    );
+
+
+    document.getElementById(
+        "customPanel"
+    ).style.display =
+        "none";
+
+
+    currentCoin =
+        coin;
+
+
+    currentPrice =
+        NORMAL_PRICE;
+
+
+    currentMoney =
+
+        coin *
+
+        NORMAL_PRICE;
+
+
+    currentGroup =
+        null;
+
+
+    isCustom =
+        false;
+
+
+    openPayment();
+
+}
+
+
+
+/* =================================================
+   SHOW CUSTOM
+================================================= */
+
+function showCustom(card) {
+
+    clearCardActive();
+
+
+    card.classList.add(
+        "active"
+    );
+
+
+    document.getElementById(
+        "customPanel"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "customCoin"
+    ).focus();
+
+}
+
+
+
+/* =================================================
+   PREVIEW CUSTOM
+================================================= */
+
+function previewCustom() {
+
+    const coin = Number(
+
+        document.getElementById(
+            "customCoin"
+        ).value
+
+    );
+
+
+    const warning =
+        document.getElementById(
+            "warning"
+        );
+
+
+    if(!coin) {
+
+        resetPreview();
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "previewCoin"
+    ).innerText =
+
+        formatNumber(
+            coin
+        );
+
+
+    const group =
+        getPriceGroup(
+            coin
+        );
+
+
+    if(!group) {
+
+        document.getElementById(
+            "previewGroup"
+        ).innerText =
+            "Ngoài bảng giá";
+
+
+        document.getElementById(
+            "previewPrice"
+        ).innerText =
+            "-";
+
+
+        document.getElementById(
+            "previewTotal"
+        ).innerText =
+            "-";
+
+
+        warning.style.display =
+            "block";
+
+
+        highlightGroup(null);
+
+
+        return;
+
+    }
+
+
+    warning.style.display =
+        "none";
+
+
+    const money =
+
+        coin *
+
+        group.price;
+
+
+    document.getElementById(
+        "previewGroup"
+    ).innerText =
+        group.name;
+
+
+    document.getElementById(
+        "previewPrice"
+    ).innerText =
+
+        formatNumber(
+            group.price
+        ) +
+
+        "đ/xu";
+
+
+    document.getElementById(
+        "previewTotal"
+    ).innerText =
+
+        formatMoney(
+            money
+        );
+
+
+    highlightGroup(
+        group
+    );
+
+}
+
+
+
+/* =================================================
+   RESET PREVIEW
+================================================= */
+
+function resetPreview() {
+
+    document.getElementById(
+        "previewCoin"
+    ).innerText =
+        "0";
+
+
+    document.getElementById(
+        "previewGroup"
+    ).innerText =
+        "-";
+
+
+    document.getElementById(
+        "previewPrice"
+    ).innerText =
+        "0đ/xu";
+
+
+    document.getElementById(
+        "previewTotal"
+    ).innerText =
+        "₫0";
+
+
+    document.getElementById(
+        "warning"
+    ).style.display =
+        "none";
+
+
+    highlightGroup(null);
+
+}
+
+
+
+/* =================================================
+   CUSTOM CHECKOUT
+================================================= */
+
+function customCheckout() {
+
+    const coin = Number(
+
+        document.getElementById(
+            "customCoin"
+        ).value
+
+    );
+
+
+    if(
+        !coin ||
+        !Number.isInteger(coin)
+    ) {
+
+        alert(
+            "Vui lòng nhập số xu hợp lệ."
+        );
+
+        return;
+
+    }
+
+
+    const group =
+        getPriceGroup(
+            coin
+        );
+
+
+    if(!group) {
+
+        alert(
+
+            "Số xu phải từ 1.000 đến 1.000.000."
+
+        );
+
+        return;
+
+    }
+
+
+    currentCoin =
+        coin;
+
+
+    currentPrice =
+        group.price;
+
+
+    currentMoney =
+
+        coin *
+
+        group.price;
+
+
+    currentGroup =
+        group;
+
+
+    isCustom =
+        true;
+
+
+    openPayment();
+
+}
+
+
+
+/* =================================================
+   RANDOM ID
+================================================= */
+
+function randomID(length = 6) {
+
+    const chars =
+
+        "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
+
+
+    let result =
+        "";
+
+
+    for(
+        let i = 0;
+        i < length;
+        i++
+    ) {
+
+        result +=
+
+            chars.charAt(
+
+                Math.floor(
+
+                    Math.random() *
+
+                    chars.length
+
+                )
+
+            );
+
+    }
+
+
+    return result;
+
+}
+
+
+
+/* =================================================
+   ORDER CODE
+
+   Ví dụ:
+   XU50000-K7M9P2
+================================================= */
+
+function generateOrderCode() {
+
+    return (
+
+        "XU" +
+
+        currentCoin +
+
+        "-" +
+
+        randomID(6)
+
+    );
+
+}
+
+
+
+/* =================================================
+   OPEN PAYMENT
+================================================= */
+
+function openPayment() {
+
+    currentOrder =
+        generateOrderCode();
+
+
+    document.getElementById(
+        "payCoin"
+    ).innerText =
+
+        formatNumber(
+            currentCoin
+        );
+
+
+    document.getElementById(
+        "payMoney"
+    ).innerText =
+
+        formatNumber(
+            currentMoney
+        ) +
+
+        "đ";
+
+
+    /*
+       Hiện đơn giá
+    */
+
+    if(isCustom) {
+
+        document.getElementById(
+            "payPrice"
+        ).innerText =
+
+            currentGroup.name +
+
+            " • " +
+
+            formatNumber(
+                currentPrice
+            ) +
+
+            "đ/xu";
+
+    }
+
+    else {
+
+        document.getElementById(
+            "payPrice"
+        ).innerText =
+
+            "Đơn giá: " +
+
+            formatNumber(
+                NORMAL_PRICE
+            ) +
+
+            "đ/xu";
+
+    }
+
+
+
+    document.getElementById(
+        "bankName"
+    ).innerText =
+        BANK_NAME;
+
+
+    document.getElementById(
+        "accountNo"
+    ).innerText =
+        ACCOUNT_NO;
+
+
+    document.getElementById(
+        "accountName"
+    ).innerText =
+        ACCOUNT_NAME;
+
+
+    document.getElementById(
+        "bankMoney"
+    ).innerText =
+
+        formatNumber(
+            currentMoney
+        ) +
+
+        "đ";
+
+
+    document.getElementById(
+        "orderCode"
+    ).innerText =
+        currentOrder;
+
+
+
+    /*
+       VIETQR
+    */
+
+    const qrURL =
+
+        "https://img.vietqr.io/image/" +
+
+        BANK_ID +
+
+        "-" +
+
+        ACCOUNT_NO +
+
+        "-compact2.png" +
+
+        "?amount=" +
+
+        currentMoney +
+
+        "&addInfo=" +
+
+        encodeURIComponent(
+            currentOrder
+        ) +
+
+        "&accountName=" +
+
+        encodeURIComponent(
+            ACCOUNT_NAME
+        );
+
+
+    document.getElementById(
+        "qrImage"
+    ).src =
+        qrURL;
+
+
+    document.getElementById(
+        "paymentModal"
+    ).style.display =
+        "flex";
+
+}
+
+
+
+/* =================================================
+   COPY ORDER
+================================================= */
+
+async function copyOrder() {
+
+    try {
+
+        await navigator.clipboard
+            .writeText(
+                currentOrder
+            );
+
+
+        alert(
+
+            "Đã copy: " +
+
+            currentOrder
+
+        );
+
+    }
+
+    catch(error) {
+
+        const textarea =
+            document.createElement(
+                "textarea"
+            );
+
+
+        textarea.value =
+            currentOrder;
+
+
+        document.body.appendChild(
+            textarea
+        );
+
+
+        textarea.select();
+
+
+        document.execCommand(
+            "copy"
+        );
+
+
+        textarea.remove();
+
+
+        alert(
+
+            "Đã copy: " +
+
+            currentOrder
+
+        );
+
+    }
+
+}
+
+
+
+/* =================================================
+   ZALO
+================================================= */
+
+async function sendZalo() {
+
+    let groupText =
+        "";
+
+
+    if(isCustom) {
+
+        groupText =
+
+`
+Nhóm giá: ${currentGroup.name}
+`;
+
+    }
+
+
+    const message =
+
+`YÊU CẦU NẠP XU
+
+Mã đơn: ${currentOrder}
+
+Số xu: ${formatNumber(currentCoin)} xu
+${groupText}
+Đơn giá: ${formatNumber(currentPrice)}đ/xu
+
+Tổng tiền: ${formatNumber(currentMoney)}đ
+
+Tôi đã chuyển khoản.
+
+Bill gửi kèm bên dưới.`;
+
+
+
+    try {
+
+        await navigator.clipboard
+            .writeText(
+                message
+            );
+
+    }
+
+    catch(error) {}
+
+
+    alert(
+
+        "Đã copy thông tin đơn.\n\n" +
+
+        "Zalo sẽ được mở.\n\n" +
+
+        "Dán nội dung và gửi kèm bill."
+
+    );
+
+
+    window.open(
+
+        "https://zalo.me/" +
+
+        ZALO_PHONE,
+
+        "_blank"
+
+    );
+
+}
+
+
+
+/* =================================================
+   CLOSE MODAL
+================================================= */
+
+function closeModal() {
+
+    document.getElementById(
+        "paymentModal"
+    ).style.display =
+        "none";
+
+}
+
+
+
+/* CLICK NGOÀI MODAL */
+
+window.addEventListener(
+
+    "click",
+
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "paymentModal"
+            );
+
+
+        if(
+            event.target === modal
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+
+);
+
+
+
+/* ESC */
+
+document.addEventListener(
+
+    "keydown",
+
+    function(event) {
+
+        if(
+            event.key === "Escape"
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+
+);
+
+
+
+/* =================================================
+   INIT
+================================================= */
+
+renderFixedPrices();
+
+renderPriceGroups();
+
+</script>
+
+</body>
+</html>
